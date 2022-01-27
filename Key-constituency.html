@@ -138,6 +138,8 @@
             return object.properties.ac === chosenConst;
         })
 
+        $('#const-name').text(getConstMap[0].properties.ac_name)
+
         // create constituency map of chosen constituency
         drawAssemblyMap(".constmap", getConstMap, {
             type: 'const', // Statecode for map
