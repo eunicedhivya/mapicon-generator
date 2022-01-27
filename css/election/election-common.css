@@ -1,0 +1,57 @@
+body{background-image:url(../../assets/img/dot-grid.png)}
+select{display:none}
+.dropdown-select{background-color:#fff;border-radius:50px;border:solid 1px #b9b9b9;box-sizing:border-box;cursor:pointer;display:block;float:left;font-size:14px;font-weight:400;height:42px;line-height:40px;outline:0;padding-left:18px;padding-right:30px;position:relative;text-align:left;transition:all .2s ease-in-out;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;white-space:nowrap;width:auto;font-family:Georama;font-size:14px;color:#9e9e9e}
+.dropdown-select:focus{background-color:#fff}
+.dropdown-select:hover{background-color:#fff}
+.dropdown-select.open,.dropdown-select:active{background-color:#fff;border-color:#bbb;box-shadow:0 1px 4px rgba(0,0,0,.05) inset}
+.dropdown-select:after{height:0;width:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:7px solid #c4c4c4;-webkit-transform:origin(50% 20%);transform:origin(50% 20%);transition:all 125ms ease-in-out;content:'';display:block;margin-top:-2px;pointer-events:none;position:absolute;right:10px;top:50%}
+.dropdown-select.open:after{-webkit-transform:rotate(-180deg);transform:rotate(-180deg)}
+.dropdown-select.open .list{-webkit-transform:scale(1);transform:scale(1);opacity:1;pointer-events:auto}
+.dropdown-select.open .option{cursor:pointer}
+.dropdown-select.wide{width:262px}
+.dropdown-select.wide .list{left:0;right:0}
+.dropdown-select .list{box-sizing:border-box;transition:all .15s cubic-bezier(.25,0,.25,1.75),opacity .1s linear;-webkit-transform:scale(.75);transform:scale(.75);-webkit-transform-origin:50% 0;transform-origin:50% 0;box-shadow:0 0 0 1px rgba(0,0,0,.09);background-color:#fff;border-radius:6px;margin-top:4px;padding:3px 0;opacity:0;overflow:hidden;pointer-events:none;position:absolute;top:100%;left:0;z-index:999;max-height:250px;overflow:auto;border:1px solid #ddd}
+.dropdown-select .list:hover .option:not(:hover){background-color:transparent}
+.dropdown-select .dd-search{overflow:hidden;display:flex;align-items:center;justify-content:center;margin:.5rem}
+.dropdown-select .dd-searchbox{width:90%;padding:.5rem;border:1px solid #999;border-color:#999;border-radius:4px;outline:0}
+.dropdown-select .dd-searchbox:focus{border-color:#f6901e}
+.dropdown-select .list ul{padding:0}
+.dropdown-select .option{cursor:default;font-weight:400;line-height:40px;outline:0;padding-left:18px;padding-right:29px;text-align:left;transition:all .2s;list-style:none}
+.dropdown-select .option:focus,.dropdown-select .option:hover{background-color:#f6f6f6}
+.dropdown-select .option.selected{font-weight:600;color:#f6901e}
+.dropdown-select .option.selected:focus{background:#f6f6f6}
+.dropdown-select a{color:#aaa;text-decoration:none;transition:all .2s ease-in-out}
+.dropdown-select a:hover{color:#666}
+.election_wrapper .breadcrum{text-align:center;margin-top:15px}
+.election_wrapper .breadcrum li{margin-right:0}
+.election_wrapper .breadcrum li span{font-size:12px;line-height:15px;color:#958f8f;text-transform:uppercase}
+.election_wrapper .breadcrum li span.breadcrumb_last{color:#000}
+.election_news_list{width:100%;float:left}
+.election_news_list .heading,.election_video_list .heading{display:flex;align-items:flex-end}
+.election_news_list .h2,.election_video_list .h2{font-family:Georama;font-style:normal;font-weight:700;font-size:32px;line-height:44px;text-align:center}
+.election_news_list .h2 a,.election_video_list .h2 a{color:#f6901e}
+.election_news_list ul,.election_video_list ul{width:100%;display:flex;flex-wrap:wrap;justify-content:space-between}
+.election_news_list figure .imgWrap a,.election_video_list figure .imgWrap a{display:block;margin-bottom:5px}
+.election_news_list ul li figcaption a,.election_video_list ul li figcaption a{font-weight:700;font-size:18px;line-height:22px;color:#000;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical}
+.election_news_list ul li{width:323.33px;margin-bottom:20px}
+.election_news_list ul li:first-child{width:661.66px}
+.moreNews{font-family:Georama;font-weight:400;font-size:16px;text-align:center;color:#a1a1a1;white-space:pre}
+.election_video_list ul li{width:49%;margin-bottom:20px}
+.election_video_list figure .imgWrap{position:relative}
+.election_video_list figure .imgWrap a::after{content:"";background:url(https://www.news9live.com/theme_tv/images/play.png);background-position:center;background-size:46px;background-repeat:no-repeat;position:absolute;width:100%;height:100%;top:0;left:0}
+.constituency_filter .filter-nav li a.active {color: #070707;font-weight: 600;}
+hr.seperator{border-top: 1px dotted #000;width: 25%;text-align: center;margin: 50px auto;}
+@media(max-width:767px){
+hr.seperator{border-top: 1px dotted #000;width: 50%;}
+.election_news_list .h2{font-size:25px;text-align:left;line-height:31px}
+.election_news_list ul li,.election_video_list ul li{width:100%}
+.election_news_list figure{display:flex}
+.election_news_list figure .imgWrap{width:112px;margin-right:10px}
+.election_news_list figure .imgWrap img{aspect-ratio:4/3}
+.election_news_list figcaption{width:calc(100% - 122px)}
+.party_dashboard .map-section .map,.party_dashboard .map-section .rCol{width:100%}
+}
+
+@media (min-width:768px){
+.allcandresult table tbody tr td.stateRow {pointer-events: none;}
+}

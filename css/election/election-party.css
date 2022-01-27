@@ -1,0 +1,87 @@
+.party_dashboard{text-align:center;font-family:Georama,sans-serif;box-sizing:border-box}
+.party_dashboard h1.dash-title{font-weight:700;font-size:40px;line-height:44px;text-align:center;color:#000;text-transform:capitalize;margin-bottom:15px}
+.party_dashboard .dash-intro p{font-family:Montserrat;font-weight:400;font-size:18px;line-height:22px;text-align:center;letter-spacing:-.02em;color:#000;margin-bottom:15px}
+.cat_nav ul{display:flex;justify-content:center;align-items:center;margin-bottom:20px}
+.cat_nav ul li{display:flex;align-items:center;margin:0 10px}
+.cat_nav ul li a{font-weight:700;font-size:14px;line-height:17px;color:#131313;margin-left:10px;text-align:left}
+.page_info p{font-size:15px;line-height:26px;text-align:center;letter-spacing:-.02em;color:#2d3dfd;text-transform:uppercase}
+.party-intro .party-logo{border-radius:50%;align-self:center}
+.party-select{display:flex;justify-content:center;align-items:center;flex-wrap:wrap}
+.party_search{margin-bottom:20px}
+.party-intro,.party_dashboard .map-section{display:flex;justify-content:center;column-gap:20px;max-width:650px;width:100%;margin:20px auto}
+.party-intro .party-logo{border-radius:50%;align-self:center}
+.party-intro-content h1.dash-title{font-size:40px;font-weight:700;margin:0;text-align:left}
+.party-intro-content p{font-size:16px;text-align:left;font-family:Georama;margin:20px 0}
+.party_dashboard .map-section .map{width:75%}
+.party_dashboard .map-tooltip{background-color:#000;color:#fff;padding:5px 10px}
+.party_dashboard .map path:hover{fill:#000;border-radius:10px}
+.party_dashboard .map-section .rCol{width:25%;text-align:left}
+.party_dashboard .yearwisefilters{margin-bottom:10px}
+.filterBtns{font-family:Georama,sans-serif;background-color:#a5a5a5;padding:5px 10px;border-radius:12px;font-size:19px;font-style:normal;font-weight:700;line-height:15px;letter-spacing:0;text-align:center;outline:0;border:none;display:block;margin-bottom:20px;color:#fff}
+.filterBtns.active{background:#070707}
+.seat-info{font-family:Georama;font-size:36px;font-style:normal;font-weight:700;line-height:38px;letter-spacing:-.02em;text-align:left}
+.seat-info span{display:block}
+.allcandresult table{width:100%;box-sizing:border-box;border-collapse:collapse;border-spacing:0;margin-bottom:20px;text-align:left}
+.allcandresult .partyRow.won{background-color:#e5f8dc;font-style:italic}
+.allcandresult table tbody tr td,.allcandresult table thead tr th{padding:10px 15px 10px 20px;font-style:normal}
+.allcandresult table thead tr th{font-size:16px;font-weight:700}
+.allcandresult table tbody tr td{font-size:18px;position:relative;font-weight:400}
+.allcandresult table thead tr{background-color:#878484;color:#fff;font-size:20px;font-weight:700;text-transform:uppercase}
+.allcandresult table tbody tr:last-child{border-bottom:1px solid #000}
+.allcandresult .stateRow img{display: inline-block;border-radius: 50%;vertical-align: middle;margin-left: 10px;width: 32px;}
+.party_nav{margin-bottom:20px}
+.party_nav h2{font-weight:700;font-size:25px;line-height:26px;text-align:left;letter-spacing:-.02em;color:#ff9c07;margin-bottom:20px;text-transform:capitalize}
+.party_nav .partySwiper{overflow: hidden;}
+.party_nav .partySwiper .swiper-pagination{position: unset;}
+.party_nav .partySwiper .swiper-pagination .swiper-pagination-bullet{margin:0 4px}
+.party_nav figcaption{font-weight:700;font-size:15px;line-height:26px;text-align:center;letter-spacing:-.02em;color:#000;margin-top:5px;}
+.constituency_filter h2{font-weight:700;font-size:25px;line-height:26px;text-align:left;letter-spacing:-.02em;color:#ff9c07;margin-bottom:20px;text-transform:capitalize}
+.constituency_filter .filter-nav{width:100%;display:flex;justify-content:space-around;flex-wrap:wrap;margin-bottom:10px;background-color:#fff}
+.constituency_filter .filter-nav li a{color:#a6a4a4;font-size:14px;line-height:26px;text-align:center;letter-spacing:.38em}
+.constituency_filter .filter-nav li.active a{color:#070707;font-weight:600}
+.filtered-data{margin-bottom:10px}
+.filtered-data ul{display:flex;justify-content:flex-start;flex-wrap:wrap}
+.filtered-data ul li{background:#f1f1f1;padding:10px;border:1px dashed #c4c4c4;margin-bottom:1%;width:19.2%;margin-right:1%}
+.filtered-data ul li:nth-child(5n+5){margin-right:0}
+.filtered-data ul li a{color:#313131;font-weight:600;font-size:14px}
+.map-tooltip{background-color: #000; color: #fff;padding:5px 10px}
+@media (max-width:600px){
+.party-intro{flex-direction:column;text-align:center}
+.party_dashboard .map-section{flex-direction:column-reverse;text-align:center}
+.party_dashboard .yearwisefilters .filterBtns{display:inline-block}
+.party-intro-content h1.dash-title,.party-intro-content p{text-align:center}
+.seat-info,.yearwisefilters{align-items:center;text-align:center;justify-content:center}
+.allcandresult table tbody,.allcandresult table td,.allcandresult table tr{display:block;width:100%;box-sizing:border-box;text-align:right}
+.allcandresult table thead{display:none}
+.allcandresult table td{border-bottom:1px solid #ccc}
+.allcandresult table td:first-child{border-top:2px solid #000}
+.allcandresult table td:last-child{border-bottom:none}
+.allcandresult table td:before{content:attr(data-label);position:absolute;left:15px;width:50%;padding-left:15px;font-weight:700;font-size:15px;text-align:left}
+.allcandresult table tbody tr td.stateRow{cursor:pointer}
+.allcandresult table tbody tr td.stateRow:hover{background-color:#b6d5a7}
+.allcandresult table tbody tr td.stateRow::after{content:"+";position:absolute;left:7px;font-size:18px;line-height:1;font-style:normal}
+.allcandresult table tbody tr td.active::after{content:"-"}
+.allcandresult .districtRow{display:none}
+}
+@media (min-width:768px){
+.allcandresult table td:first-child{width:40%}
+.allcandresult table td:nth-child(2),.allcandresult table td:nth-child(3){width:30%}
+.allcandresult table tbody tr{border-bottom:1px dotted #000}
+.allcandresult tbody td:first-child,.allcandresult thead th:first-child{width:30%}
+.allcandresult tbody td:nth-child(2),.allcandresult thead th:nth-child(2){width:20%}
+.allcandresult tbody td:nth-child(3),.allcandresult tbody td:nth-child(4),.allcandresult tbody td:nth-child(5),.allcandresult thead th:nth-child(3),.allcandresult thead th:nth-child(4),.allcandresult thead th:nth-child(5){width:16.6%}
+.allcandresult .districtRow{display:table-cell}
+.party_dashboard .map-section{align-items:center;text-align:center;justify-content:center}
+}
+@media(max-width:767px){
+.cat_nav ul li{margin:0 10px 0 0}
+.cat_nav ul li img{width:24px}
+.cat_nav ul li a{font-size:12px;line-height:14px;margin-left:5px}
+.party_dashboard .map-section .map,.party_dashboard .map-section .rCol{width:100%}
+.constituency_filter .filter-nav{justify-content:flex-start}
+.constituency_filter .filter-nav li a{width:48px;height:48px;display:flex;align-items:center;justify-content:center}
+.filtered-data ul li{width:32.33%;display:flex;justify-content:center;align-items:center}
+.filtered-data ul li:nth-child(3n+3){margin-right:0}
+.filtered-data ul li:nth-child(5n+5){margin-right:1%}
+.filtered-data ul li a{line-height:20px}
+}

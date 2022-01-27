@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Constituency</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Georama:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,169;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!-- for demo only -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.news9live.com/styles/themetvfile.min.e5df8239.css" />
+    <link rel="stylesheet" href="css/common.css">
+    <!-- ------------- -->
+    <!-- <link rel="stylesheet" href="css/election/election-common.css"> -->
+    <!-- <link rel="stylesheet" href="css/election/election-constituency.css"> -->
+    <style>
+        svg{
+            background-color: #e8e8e8;
+            /* border-radius: 20px; */
+            /* border:1px solid red; */
+        }
+        .constmap{
+            width: 169px !important;
+        }
+        .cand-result-filter li {
+            cursor: pointer;
+        }
+
+        .cand-result-filter li:hover {
+            background-color: #000;
+            color: #fff;
+        }
+        .maparea{
+            display: flex;
+            column-gap: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="full_wrapper">
+        <div class="main_wrapper">
+            <p id="const-name">Const-Name</p>
+            <section class="maparea">
+                    <div class="constmap"></div>
+                    <canvas id="canvas" width="169" height="169"></canvas>
+                    <div id="png-container"></div>
+            </section>
+        </div>
+        <!-- <select id="state-list" class="">
+            <option>Uttar Pradesh</option>
+            <option>Punjab</option>
+            <option>Goa</option>
+            <option>Uttarakhand</option>
+            <option>Manipur</option>
+        </select>
+        <select id="const-list" class="">
+            <option>Choose Const</option>
+        </select> -->
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="js/d3.v4.min.js"></script>
+    <script src="js/topojson.v2.min.js"></script>
+    <script src="js/d3-tip.js"></script>
+    <script src="js/functions.js"></script>
+    <script src="assets/data/const-list.js"></script>
+    <script src="js/map-constituency.js"></script>
+    <script>
+        // Chosen State and Constituency
+        // var chosenState = "uk";
+        // var chosenConst = 1;
+        // var chosenYear = "2017";
+
+        var currentUrl = window.location.href;
+        var url = currentUrl;
+        var params = (new URL(url)).searchParams;
+        var chosenState = params.get('state'), chosenConst = parseInt(params.get('const'));
+
+        // import Data API for Constituency  
+        var constwisetrenddata2017 = (function () {
+            constwisetrenddata2017 = null;
+            jQuery.ajax({
+                'async': false,
+                'global': false,
+                'dataType': 'json',
+                'cache': false,
+                'url': 'assets/data/dataset-constituency.json',
+                'success': function (data) {
+                    constwisetrenddata2017 = data;
+                }
+            });
+            return constwisetrenddata2017[chosenState];
+        })();
+
+        // import topojson map for State
+        var assemplyconstmap_up = (function () {
+            assemplyconstmap_up = null;
+            jQuery.ajax({
+                'async': false,
+                'global': false,
+                'dataType': 'json',
+                'cache': false,
+                'url': constwisetrenddata2017.stateURL,
+                'success': function (stateShape) {
+                    assemplyconstmap_up = topojson.feature(stateShape, stateShape.objects
+                        .collection).features;
+                }
+            });
+            return assemplyconstmap_up;
+        })();
+
+        // function create_custom_dropdowns(changemapdata) {
+        //     var dropdown = d3.select("#const-list");
+        //     dropdown.selectAll(".options").data(changemapdata).enter()
+        //         .append("option")
+        //         .attr("value", function(dd){
+        //              return dd['properties']['ac']
+        //         })
+        //         .text(function(dd){
+        //            return dd['properties']['ac_name']
+        //         })
+
+        // }
+
+        // create_custom_dropdowns(assemplyconstmap_up)
+
+
+        // Get the current constituency data from map data
+        var getConstMap = assemplyconstmap_up.filter(function (object) {
+            return object.properties.ac === chosenConst;
+        })
+
+        // create constituency map of chosen constituency
+        drawAssemblyMap(".constmap", getConstMap, {
+            type: 'const', // Statecode for map
+            statecode: 'U07', // Statecode for map
+            vhcode: 'uk', // state vehicle code
+            constnokey: 'ac', // add map topojson
+            constnamekey: 'ac_name', // add map topojson
+            scale: getConstMap[0].properties.scale, // size adjust until it sits well
+            center: getConstMap[0].properties.center, // enter lat long from google of UP
+            inset: false,
+            enableEvents: false
+        })
+
+        
+
+
+    </script>
+   <script>
+    var svgString = new XMLSerializer().serializeToString(document.querySelector('svg'));
+    var imgName = $('#const-name').text()
+    console.log("Text", imgName);
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+    var DOMURL = self.URL || self.webkitURL || self;
+    var img = new Image();
+    var svg = new Blob([svgString], { type: "image/svg+xml;charset=utf-8" });
+    var url = DOMURL.createObjectURL(svg);
+    img.onload = function () {
+        ctx.drawImage(img, 0, 0);
+        var png = canvas.toDataURL("image/png");
+        document.querySelector('#png-container').innerHTML = '<img src="' + png + '"/>';
+        DOMURL.revokeObjectURL(png);
+    };
+    img.src = url;
+
+</script>
+    
+</body>
+
+</html>
