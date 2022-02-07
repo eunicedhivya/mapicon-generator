@@ -87,14 +87,14 @@ function drawAssemblyMap(selector, mapdata, settings){
         // var stateconst = topojson.feature(stateShape, stateShape.objects.collection).features;
         // console.log(stateconst);
 
-        var rect_bg = svg.append("rect")
-                .attr("width", width)
-                .attr("height", height)
-                .attr("fill", "#e8e8e8")
-                .attr("rx", 20)
-                .attr("ry", 20)
-                .attr("x", 0)
-                .attr("y", 0)
+        // var rect_bg = svg.append("rect")
+        //         .attr("width", width)
+        //         .attr("height", height)
+        //         .attr("fill", "#e8e8e8")
+        //         .attr("rx", 20)
+        //         .attr("ry", 20)
+        //         .attr("x", 0)
+        //         .attr("y", 0)
 
     var constituency =  svg.selectAll(".const")
             .data(mapdata).enter().append("path")
@@ -141,9 +141,7 @@ function drawAssemblyMap(selector, mapdata, settings){
 
             // create Inset if True
             // ================================================================
-            if(settings.inset === true){
-
-                svg.append("rect")
+             svg.append("rect")
                 .attr("class", "inset-rect")
                 .attr("x", 0)
                 .attr("width", width)
@@ -157,13 +155,12 @@ function drawAssemblyMap(selector, mapdata, settings){
                 var groupElement = document.querySelector(".c"+settings.defaultconst).getBBox();
                 // console.log(groupElement)
 
-                d3.select(".inset-rect").transition().duration(750)
+                d3.select(".inset-rect")
                     .attr("x", groupElement.x-4)
                     .attr("y", groupElement.y-4)
                     .attr("width", groupElement.width + 10)
                     .attr("height", groupElement.height + 10)
                     .attr("stroke-opacity", 1);
-            }
 
             // ====================================
             // Create Dropdown from map source            
