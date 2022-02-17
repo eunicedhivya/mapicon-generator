@@ -108,15 +108,32 @@
             "uk": 70,
             "pb": 117,
         }
+        var stateCode = {
+            "up": "24",
+            "mn": "14",
+            "ga": "05",
+            "uk": "52",
+            "pb": "19",
+        }
 
 
 
-        // for(var l = 1; l <= 403; l++){
-        //     var cL = document.createElement('a')
-        //         cL.innerHTML = l;
-        //         cL.href = 'constituency.html?state=up&const=' + l;
-        //     nav.appendChild(cL)
-        // }
+        function prependZero(inpnum){
+            var inpLen = String(inpnum).length;
+            var addPad = "";
+            if(inpLen === 3){
+                addPad = String(inpnum);
+            }else if(inpLen === 2){
+                addPad = String(inpnum).padStart(3, '0');
+            }else if(inpLen === 1){
+                addPad = String(inpnum).padStart(3, '0');
+            }
+            return addPad;
+        }
+
+        console.log(prependZero(1));
+        console.log(prependZero(60));
+        console.log(prependZero(300));
 
         var mapGeodata = {
             "up": {
@@ -210,9 +227,11 @@
             return object.properties.ac === chosenConst;
         })
 
-        constName2.innerHTML = getConstMap[0].properties.ac;
+        var formattedFileName = stateCode[chosenState] + prependZero(getConstMap[0].properties.ac);
 
-        $('#const-name').text(getConstMap[0].properties.ac)
+        constName2.innerHTML = formattedFileName;
+
+        $('#const-name').text(formattedFileName)
 
         // create constituency map of chosen constituency
         drawAssemblyMap(".constmap", getConstMap, {
