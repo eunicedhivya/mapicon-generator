@@ -15,10 +15,49 @@
           max-width: 800px;
           margin: 0 auto;
           display: flex;
+          justify-content: center;
       }
 
-      img{
+      p{ text-align: center;}
+
+      img, #canvas{
           border: 1px solid #ccc;
+      }
+
+      #const-name{ visibility: hidden;}
+
+      /* .constmap{
+          width: 169px;
+      } */
+
+      /* svg .inset-rect{
+          display: none;
+      } */
+
+
+      nav{
+              margin-top: 10px;
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-evenly;
+      }
+
+      a {
+          background-color: #000;
+          color: #FFF;
+          padding: 5px 10px;
+          margin-left: 10px;
+          text-decoration: none;
+          /* display: inline-block; */
+      }
+
+      a:hover{
+          background-color: #CCC;
+          color: #333;
+      }
+
+      button{
+          text-align: center;
       }
 
       /* .map svg{
@@ -28,12 +67,15 @@
 </head>
 
 <body>
+    <nav id="navigation">
+    </nav>
     <div class="main_wrapper">
         <p id="const-name">Const-Name</p>
         <div class="constmap"></div>
         <canvas id="canvas" width="169" height="169"></canvas>
         <div id="png-container"></div>
     </div>
+    <p><button onclick="screenshot()">Download</button></p>
     <div class="main_wrapper">
         <div class="map"></div>
         <canvas id="canvas2" width="169" height="169"></canvas>
@@ -42,6 +84,9 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"
+        integrity="sha512-DvLlX4EDfBZuesenAya2TOiF+cR7GbRsV+IElolKTYIj8JJHr9BFTcznTuRFabG26vcVsmDCcv2dL7m8Ov1XfA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="js/d3.v4.min.js"></script>
     <script src="js/topojson.v2.min.js"></script>
@@ -54,6 +99,38 @@
         // var chosenState = "uk";
         // var chosenConst = 1;
         // var chosenYear = "2017";
+
+        var nav = document.getElementById("navigation")
+
+            var noSeats = {
+                "up": 403,
+                "mn": 60,
+                "ga": 40,
+                "uk": 70,
+                "pb": 117,
+            }
+            var stateCode = {
+                "up": "24",
+                "mn": "14",
+                "ga": "05",
+                "uk": "52",
+                "pb": "19",
+            }
+
+
+
+            function prependZero(inpnum) {
+                var inpLen = String(inpnum).length;
+                var addPad = "";
+                if (inpLen === 3) {
+                    addPad = String(inpnum);
+                } else if (inpLen === 2) {
+                    addPad = String(inpnum).padStart(3, '0');
+                } else if (inpLen === 1) {
+                    addPad = String(inpnum).padStart(3, '0');
+                }
+                return addPad;
+            }
 
         var mapGeodata = {
             "up": {
@@ -70,22 +147,22 @@
                     75.34,
                     31.05
                 ],
-                "stateScale": 4500
+                "stateScale": 3500
             },
             "uk": {
                 "stateURL": "assets/maps/UK.json",
                 "stateCenter": [79.300, 30.0668],
-                "stateScale": 4500,
+                "stateScale": 3500,
             },
             "ga": {
                 "stateURL": "assets/maps/Goa.json",
-                "stateCenter": [74.12, 15.29],
+                "stateCenter": [74.00, 15.36],
                 "stateScale": 15500,
             },
             "mn": {
                 "stateURL": "assets/maps/manipur.json",
-                "stateCenter": [93.90, 24.66],
-                "stateScale": 8500
+                "stateCenter": [93.80, 24.75],
+                "stateScale": 7000
             }
         }
 
@@ -95,6 +172,27 @@
         var url = currentUrl;
         var params = (new URL(url)).searchParams;
         var chosenState = params.get('state'), chosenConst = parseInt(params.get('const'));
+
+        var prevBtn = document.createElement('a')
+            prevBtn.innerHTML = "Previous";
+
+            var constName2 = document.createElement('span')
+
+            var nextBtn = document.createElement('a')
+            nextBtn.innerHTML = "Next";
+
+            prevBtn.href = 'state-locator.html?state=' + chosenState + '&const=' + (chosenConst - 1);
+            nextBtn.href = 'state-locator.html?state=' + chosenState + '&const=' + (chosenConst + 1);
+
+            nav.appendChild(prevBtn)
+            nav.appendChild(constName2)
+            nav.appendChild(nextBtn)
+
+             if (chosenConst === 1) {
+                    prevBtn.style.visibility = "hidden"
+                } else if (chosenConst === noSeats[chosenState]) {
+                    nextBtn.style.visibility = "hidden"
+                }
 
         // import Data API for Constituency  
         var constwisetrenddata2017 = (function () {
@@ -149,7 +247,11 @@
             return object.properties.ac === chosenConst;
         })
 
-        $('#const-name').text(getConstMap[0].properties.ac_name)
+        var formattedFileName = stateCode[chosenState] + prependZero(getConstMap[0].properties.ac);
+
+            constName2.innerHTML = formattedFileName;
+
+            $('#const-name').text(formattedFileName)
 
         // create constituency map of chosen constituency
         // drawAssemblyMap(".constmap", getConstMap, {
@@ -182,6 +284,12 @@
         // DOMURL.revokeObjectURL(png);
     };
     img.src = url;
+    function screenshot() {
+            var canvas2 = document.getElementById('canvas')
+            canvas.toBlob(function (blob) {
+                saveAs(blob, imgName + '.png')
+            })
+        }
 </script>
     
 </body>
