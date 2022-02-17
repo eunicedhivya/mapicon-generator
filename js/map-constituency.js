@@ -141,7 +141,8 @@ function drawAssemblyMap(selector, mapdata, settings){
 
             // create Inset if True
             // ================================================================
-             svg.append("rect")
+            if(settings.inset !== false){
+                svg.append("rect")
                 .attr("class", "inset-rect")
                 .attr("x", 0)
                 .attr("width", width)
@@ -161,6 +162,9 @@ function drawAssemblyMap(selector, mapdata, settings){
                     .attr("width", groupElement.width + 10)
                     .attr("height", groupElement.height + 10)
                     .attr("stroke-opacity", 1);
+
+            }
+             
 
             // ====================================
             // Create Dropdown from map source            
