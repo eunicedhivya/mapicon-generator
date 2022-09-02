@@ -50,10 +50,62 @@
         "resultdata2017": "March 11, 2017",
         "resultdata2012": "February 15, 2012",
         "rural-urban": {
-          "2012":  [{ "party": "Rural", "votes": 403, "votes%": 77.3, "status": "lead" }, { "party": "Urban", "votes": 403, "votes%": 22.27, "status": "lead" }],
-          "2014":  [{ "party": "Rural", "votes": 403, "votes%": 60, "status": "lead" }, { "party": "Urban", "votes": 403, "votes%": 40, "status": "lead" }],
-          "2017":  [{ "party": "Rural", "votes": 403, "votes%": 30, "status": "lead" }, { "party": "Urban", "votes": 403, "votes%": 70, "status": "lead" }],
-          "2019":  [{ "party": "Rural", "votes": 403, "votes%": 77.3, "status": "lead" }, { "party": "Urban", "votes": 403, "votes%": 22.27, "status": "lead" }]
+          "2012": [
+            {
+              "party": "Rural",
+              "votes": 403,
+              "votes%": 77.3,
+              "status": "lead"
+            },
+            {
+              "party": "Urban",
+              "votes": 403,
+              "votes%": 22.27,
+              "status": "lead"
+            }
+          ],
+          "2014": [
+            {
+              "party": "Rural",
+              "votes": 403,
+              "votes%": 60,
+              "status": "lead"
+            },
+            {
+              "party": "Urban",
+              "votes": 403,
+              "votes%": 40,
+              "status": "lead"
+            }
+          ],
+          "2017": [
+            {
+              "party": "Rural",
+              "votes": 403,
+              "votes%": 30,
+              "status": "lead"
+            },
+            {
+              "party": "Urban",
+              "votes": 403,
+              "votes%": 70,
+              "status": "lead"
+            }
+          ],
+          "2019": [
+            {
+              "party": "Rural",
+              "votes": 403,
+              "votes%": 77.3,
+              "status": "lead"
+            },
+            {
+              "party": "Urban",
+              "votes": 403,
+              "votes%": 22.27,
+              "status": "lead"
+            }
+          ]
         },
         "genderturnout": {
           "2012": [
@@ -703,10 +755,62 @@
         "resultdata2017": "March 11, 2017",
         "resultdata2012": "-",
         "rural-urban": {
-          "2012":  [{ "party": "Rural", "votes": 403, "votes%": 77.3, "status": "lead" }, { "party": "Urban", "votes": 403, "votes%": 22.27, "status": "lead" }],
-          "2014":  [{ "party": "Rural", "votes": 403, "votes%": 60, "status": "lead" }, { "party": "Urban", "votes": 403, "votes%": 40, "status": "lead" }],
-          "2017":  [{ "party": "Rural", "votes": 403, "votes%": 30, "status": "lead" }, { "party": "Urban", "votes": 403, "votes%": 70, "status": "lead" }],
-          "2019":  [{ "party": "Rural", "votes": 403, "votes%": 77.3, "status": "lead" }, { "party": "Urban", "votes": 403, "votes%": 22.27, "status": "lead" }]
+          "2012": [
+            {
+              "party": "Rural",
+              "votes": 403,
+              "votes%": 77.3,
+              "status": "lead"
+            },
+            {
+              "party": "Urban",
+              "votes": 403,
+              "votes%": 22.27,
+              "status": "lead"
+            }
+          ],
+          "2014": [
+            {
+              "party": "Rural",
+              "votes": 403,
+              "votes%": 60,
+              "status": "lead"
+            },
+            {
+              "party": "Urban",
+              "votes": 403,
+              "votes%": 40,
+              "status": "lead"
+            }
+          ],
+          "2017": [
+            {
+              "party": "Rural",
+              "votes": 403,
+              "votes%": 30,
+              "status": "lead"
+            },
+            {
+              "party": "Urban",
+              "votes": 403,
+              "votes%": 70,
+              "status": "lead"
+            }
+          ],
+          "2019": [
+            {
+              "party": "Rural",
+              "votes": 403,
+              "votes%": 77.3,
+              "status": "lead"
+            },
+            {
+              "party": "Urban",
+              "votes": 403,
+              "votes%": 22.27,
+              "status": "lead"
+            }
+          ]
         },
         "genderturnout": [
           {
@@ -2313,7 +2417,10 @@
   },
   "mn": {
     "stateURL": "assets/maps/manipur.json",
-    "stateCenter": [ 93.90, 24.66],
+    "stateCenter": [
+      93.90,
+      24.66
+    ],
     "stateScale": 8500,
     "constituencyData": [
       {
@@ -3402,7 +3509,10 @@
   },
   "ga": {
     "stateURL": "assets/maps/Goa.json",
-    "stateCenter": [ 74.12, 15.29],
+    "stateCenter": [
+      74.12,
+      15.29
+    ],
     "stateScale": 15500,
     "constituencyData": [
       {
@@ -4491,7 +4601,10 @@
   },
   "uk": {
     "stateURL": "assets/maps/UK.json",
-    "stateCenter": [ 79.0193, 30.0668],
+    "stateCenter": [
+      79.0193,
+      30.0668
+    ],
     "stateScale": 5000,
     "constituencyData": [
       {
@@ -5577,5 +5690,13 @@
         }
       }
     ]
+  },
+  "hp": {
+    "stateURL": "assets/maps/hp.json",
+    "stateCenter": [
+      79.0193,
+      30.0668
+    ],
+    "stateScale": 5000
   }
 }
