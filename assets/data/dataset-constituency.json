@@ -5698,5 +5698,13 @@
       30.0668
     ],
     "stateScale": 5000
+  },
+  "gj": {
+    "stateURL": "assets/maps/gujarat.json",
+    "stateCenter": [
+      79.0193,
+      30.0668
+    ],
+    "stateScale": 5000
   }
 }
